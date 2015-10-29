@@ -14,6 +14,28 @@
         font-weight: normal;
       }
       .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .footnote {
+        position: absolute;
+        bottom: 3em;
+        font-size: 12px;
+      }
+      .small {
+        font-size: 12px;
+      }
+      .left-column {
+        color: #777;
+        width: 20%;
+        height: 92%;
+        float: left;
+      }
+      .left-column h2:last-of-type, .left-column h3:last-child {
+        color: #000;
+      }
+      .right-column {
+        width: 75%;
+        float: right;
+        padding-top: 1em;
+      }
     </style>
   </head>
   <body>
@@ -69,6 +91,129 @@ class: center, middle
 background-image: url(./images/node-logo.png)
 
 ---
+
+.left-column[
+  ## What is Node.js?
+]
+
+.right-column[
+Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine.
+Node.js uses an event-driven, non-blocking I/O model that makes it lightweight
+and efficient. Node.js' package ecosystem, npm, is the largest ecosystem of
+open source libraries in the world.
+
+- JavaScript runtime
+- Open source
+- Cross-platform
+]
+
+---
+
+.left-column[
+  ## What is Node.js?
+  ## What is it good for?
+]
+
+.right-column[
+- Web servers
+- Utilities written in JavaScript
+- IoT
+- Pretty much everything..
+]
+
+---
+
+.left-column[
+  ## What is Node.js?
+  ## What is it good for?
+  ## But why JavaScript?
+]
+
+.right-column[
+- Non-blocking
+- Asynchronous
+- You're probably using it already anyway
+]
+
+---
+
+class: center, middle
+
+# The anatomy of Node.js
+
+```
++---------------------------------------------------+
+|                                                   |
+|  +---------------------------------------------+  |
+|  |                                             |  |
+|  |           Node.js core libraries            |  |
+|  |                                             |  |
+|  +---------------------------------------------+  |
+|  +---------------------------------------------+  |
+|  |                                             |  |
+|  |               Node.js bindings              |  |
+|  |                                             |  |
+|  +---------------------------------------------+  |
+|  +---------------------+ +---------------------+  |
+|  |                     | |                     |  |
+|  |         V8          | |       libuv         |  |
+|  |                     | |                     |  |
+|  +---------------------+ +---------------------+  |
+|                                                   |
++---------------------------------------------------+
+
+
+```
+
+---
+
+background-image: url(./images/node-turtle.png)
+
+---
+
+## Modules
+
+_logger.js_
+```js
+module.exports = function () {
+  console.log('hello world');
+};
+```
+
+_index.js_
+```js
+const Logger = require('./logger');
+
+Logger();
+```
+
+Reusable bits of functionality that you can share with the world.
+
+---
+
+## npm
+
+Your favorite package manager! npm comes packaged with Node.js and gives access
+to ~199582 modules.
+
+Some are incredibly useful..
+
+```js
+const Request = require('request');
+
+Request.get('http://www.google.com').pipe(process.stdout);
+```
+
+Some are ridiculous .small[ly awesome]
+
+```js
+const CatNames = require('cat-names');
+
+CatNames.random();
+```
+
+.footnote[npm loves you]
+
     </textarea>
     <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
     </script>
